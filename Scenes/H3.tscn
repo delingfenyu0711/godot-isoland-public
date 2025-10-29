@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://203y4e4rnlik"]
+
+[ext_resource type="PackedScene" uid="uid://or1tl7niiio" path="res://Scenes/scencebase.tscn" id="1_ala4c"]
+[ext_resource type="Script" uid="uid://bsifaj80mr7h8" path="res://Scripts/Ineractable/Teleporter.gd" id="2_7t5f2"]
+[ext_resource type="Texture2D" uid="uid://ddxcnfmn267qa" path="res://Assert/H3/H3.png" id="2_wnck3"]
+[ext_resource type="Texture2D" uid="uid://dkw21g7k7ueuo" path="res://Assert/Texture/Light.png" id="4_xkajc"]
+[ext_resource type="Script" uid="uid://dlyc2t0mc3jxc" path="res://Scripts/Tool/Scene/Light/TVlight.gd" id="5_b8q0j"]
+[ext_resource type="Script" uid="uid://bdreekvae2ha5" path="res://Scripts/UI/Item/compass.gd" id="6_ktqp1"]
+[ext_resource type="Resource" uid="uid://dy2p5842ageyi" path="res://Assert/Items/compass.tres" id="7_b4uac"]
+[ext_resource type="Texture2D" uid="uid://b35f44lirmeg0" path="res://Assert/H3/Compass.png" id="7_ktqp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkajc"]
+size = Vector2(192, 328.5)
+
+[node name="Scence" instance=ExtResource("1_ala4c")]
+
+[node name="BackGround" parent="." index="0"]
+texture = ExtResource("2_wnck3")
+
+[node name="ToH2" type="Area2D" parent="BackGround" index="0"]
+position = Vector2(862, 353)
+script = ExtResource("2_7t5f2")
+target_path = "uid://di0flmox7r41m"
+metadata/_custom_type_script = "uid://bsifaj80mr7h8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/ToH2" index="0"]
+position = Vector2(0, 1.75)
+shape = SubResource("RectangleShape2D_xkajc")
+
+[node name="PointLight2D" type="PointLight2D" parent="BackGround" index="1"]
+position = Vector2(-368, 100)
+scale = Vector2(0.328125, 0.328125)
+energy = 0.5
+texture = ExtResource("4_xkajc")
+script = ExtResource("5_b8q0j")
+base_energy = 0.75
+
+[node name="compass" type="Area2D" parent="BackGround" index="2"]
+position = Vector2(-272, 204)
+scale = Vector2(0.37980115, 0.37980115)
+script = ExtResource("6_ktqp1")
+item = ExtResource("7_b4uac")
+texture = ExtResource("7_ktqp1")
+metadata/_custom_type_script = "uid://deh7s74e8vn8f"

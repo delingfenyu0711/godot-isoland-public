@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbufs5ohwfi2l"]
+
+[ext_resource type="PackedScene" uid="uid://or1tl7niiio" path="res://Scenes/scencebase.tscn" id="1_pilou"]
+[ext_resource type="Script" uid="uid://bsifaj80mr7h8" path="res://Scripts/Ineractable/Teleporter.gd" id="2_6kltm"]
+[ext_resource type="Texture2D" uid="uid://defhjd4wy3i4n" path="res://Assert/H4/H4.png" id="2_rjynf"]
+[ext_resource type="PackedScene" uid="uid://diwr3lmsiqoug" path="res://Scenes/Mailbox.tscn" id="4_ypdmp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kotwk"]
+size = Vector2(168.5, 266.5)
+
+[node name="Scence" instance=ExtResource("1_pilou")]
+
+[node name="BackGround" parent="." index="0"]
+texture = ExtResource("2_rjynf")
+
+[node name="ToH2" type="Area2D" parent="BackGround" index="0"]
+position = Vector2(306, -193)
+script = ExtResource("2_6kltm")
+target_path = "uid://di0flmox7r41m"
+metadata/_custom_type_script = "uid://bsifaj80mr7h8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/ToH2" index="0"]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_kotwk")
+
+[node name="MailBox" parent="." index="1" instance=ExtResource("4_ypdmp")]
+position = Vector2(1728, 880)

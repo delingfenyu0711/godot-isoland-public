@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://diwr3lmsiqoug"]
+
+[ext_resource type="Script" uid="uid://pc50iwe1qpbk" path="res://Scripts/UI/Item/mailbox.gd" id="1_2fru5"]
+[ext_resource type="Texture2D" uid="uid://beo3kw0bgq03y" path="res://Assert/H4/mailBox_close.png" id="2_gkqy2"]
+[ext_resource type="Script" uid="uid://c1o4ytlwc1w6w" path="res://Scripts/Ineractable/Interactable.gd" id="3_fo1ri"]
+[ext_resource type="Texture2D" uid="uid://1yu6co1wj0hm" path="res://Assert/H4/mailBox_open.png" id="4_d1xw0"]
+[ext_resource type="Script" uid="uid://deh7s74e8vn8f" path="res://Scripts/Tool/Scene/Items/SceneItem.gd" id="5_w1giw"]
+[ext_resource type="Resource" uid="uid://c8u6w8jhhln08" path="res://Assert/Items/mail.tres" id="6_yd5qj"]
+[ext_resource type="Texture2D" uid="uid://lv7kwxxefxph" path="res://Assert/H4/mail_piece.png" id="7_4kfs3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_121bo"]
+size = Vector2(152, 203.625)
+
+[node name="MailBox" type="Node2D"]
+script = ExtResource("1_2fru5")
+flag = "maibox_unlocked"
+metadata/_custom_type_script = "uid://24v6yydxrnlq"
+
+[node name="MailBoxClose" type="Sprite2D" parent="."]
+position = Vector2(0, -328)
+texture = ExtResource("2_gkqy2")
+
+[node name="Interactable" type="Area2D" parent="MailBoxClose"]
+position = Vector2(-128, -272)
+script = ExtResource("3_fo1ri")
+allow_item = true
+metadata/_custom_type_script = "uid://c1o4ytlwc1w6w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MailBoxClose/Interactable"]
+position = Vector2(0, 42.1875)
+shape = SubResource("RectangleShape2D_121bo")
+
+[node name="MailBoxOpen" type="Sprite2D" parent="."]
+position = Vector2(-40, -328)
+texture = ExtResource("4_d1xw0")
+
+[node name="SceneItem" type="Area2D" parent="MailBoxOpen"]
+position = Vector2(-48, -176)
+script = ExtResource("5_w1giw")
+item = ExtResource("6_yd5qj")
+texture = ExtResource("7_4kfs3")
+allow_item = null
+metadata/_custom_type_script = "uid://deh7s74e8vn8f"
+
+[connection signal="interact" from="MailBoxClose/Interactable" to="." method="_on_interactable_interact"]

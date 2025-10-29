@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn0fehc4fkjqx"]
+
+[ext_resource type="Script" uid="uid://bq8r4w5t7p5ec" path="res://Scripts/UI/Item/scene_photo.gd" id="1_hhdja"]
+[ext_resource type="Script" uid="uid://c1o4ytlwc1w6w" path="res://Scripts/Ineractable/Interactable.gd" id="3_gebjt"]
+[ext_resource type="Texture2D" uid="uid://bo3wbe6bcf8f7" path="res://Assert/H1/photon.png" id="3_nwji3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_121bo"]
+size = Vector2(152, 203.625)
+
+[node name="Photon" type="Node2D"]
+script = ExtResource("1_hhdja")
+metadata/_custom_type_script = "uid://24v6yydxrnlq"
+
+[node name="Photonhide" type="Sprite2D" parent="."]
+
+[node name="Interactable" type="Area2D" parent="Photonhide"]
+script = ExtResource("3_gebjt")
+allow_item = true
+metadata/_custom_type_script = "uid://c1o4ytlwc1w6w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Photonhide/Interactable"]
+shape = SubResource("RectangleShape2D_121bo")
+
+[node name="PhotonHang" type="Sprite2D" parent="."]
+texture = ExtResource("3_nwji3")
+
+[connection signal="interact" from="Photonhide/Interactable" to="." method="_on_interactable_interact"]

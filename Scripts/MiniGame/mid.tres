@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="H2AConfig" load_steps=2 format=3 uid="uid://ct5nhgkbcng3x"]
+
+[ext_resource type="Script" uid="uid://s7laa1pvlm4h" path="res://Scripts/MiniGame/H2AConfig.gd" id="1_p2ctd"]
+
+[resource]
+script = ExtResource("1_p2ctd")
+placements = PackedInt32Array(0, 4, 3, 2, 1, 6, 5)
+connections = {
+0: [1, 2, 5, 4, 6],
+1: [0, 3, 5],
+2: [0, 4, 6],
+3: [1, 6],
+4: [2, 0, 6],
+5: [1, 0],
+6: [3, 4, 2, 0]
+}
+metadata/_custom_type_script = "uid://s7laa1pvlm4h"

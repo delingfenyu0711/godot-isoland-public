@@ -1,0 +1,47 @@
+[gd_scene load_steps=11 format=3 uid="uid://n6sohamcj6nq"]
+
+[ext_resource type="PackedScene" uid="uid://or1tl7niiio" path="res://Scenes/scencebase.tscn" id="1_0hns6"]
+[ext_resource type="Script" uid="uid://bsifaj80mr7h8" path="res://Scripts/Ineractable/Teleporter.gd" id="2_d62xf"]
+[ext_resource type="Texture2D" uid="uid://b6lf8luy4xtpv" path="res://Assert/H2A/roomsignBG.png" id="2_ftun1"]
+[ext_resource type="Script" uid="uid://co7q6njxk3cg7" path="res://Scripts/UI/Scence/H2A.gd" id="3_v0vuo"]
+[ext_resource type="Script" uid="uid://cfn61prjp6g0g" path="res://Scripts/MiniGame/H2ABoard.gd" id="4_ftun1"]
+[ext_resource type="Script" uid="uid://c1o4ytlwc1w6w" path="res://Scripts/Ineractable/Interactable.gd" id="4_reo8b"]
+[ext_resource type="Texture2D" uid="uid://cisty7e4yaj45" path="res://Assert/H2A/gearbg.png" id="5_f1qna"]
+[ext_resource type="Texture2D" uid="uid://ckqqg3s6dcpjk" path="res://Assert/H2A/gear.png" id="6_f1qna"]
+[ext_resource type="Resource" uid="uid://bpcxpyfqxne4u" path="res://Scripts/MiniGame/easy.tres" id="9_v0vuo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dswhy"]
+radius = 71.02816
+
+[node name="Scence" instance=ExtResource("1_0hns6")]
+
+[node name="BackGround" parent="." index="0"]
+texture = ExtResource("2_ftun1")
+script = ExtResource("3_v0vuo")
+
+[node name="ToH2" type="Area2D" parent="BackGround" index="0"]
+position = Vector2(-802, -431)
+script = ExtResource("2_d62xf")
+target_path = "uid://di0flmox7r41m"
+metadata/_custom_type_script = "uid://bsifaj80mr7h8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/ToH2" index="0"]
+shape = SubResource("CircleShape2D_dswhy")
+
+[node name="Reset" type="Area2D" parent="BackGround" index="1"]
+position = Vector2(735, -379)
+script = ExtResource("4_reo8b")
+texture = ExtResource("5_f1qna")
+metadata/_custom_type_script = "uid://c1o4ytlwc1w6w"
+
+[node name="Gear" type="Sprite2D" parent="BackGround/Reset" index="2"]
+texture = ExtResource("6_f1qna")
+
+[node name="Board" type="Node2D" parent="." index="1"]
+position = Vector2(917, 540)
+script = ExtResource("4_ftun1")
+target_path = "uid://di0flmox7r41m"
+radius = 400.0
+config = ExtResource("9_v0vuo")
+
+[connection signal="interact" from="BackGround/Reset" to="BackGround" method="_on_reset_interact"]

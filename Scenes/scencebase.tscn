@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://or1tl7niiio"]
+
+[ext_resource type="Texture2D" uid="uid://d013bsyuwqhlk" path="res://Assert/H1/H1.png" id="1_7ixr6"]
+[ext_resource type="Script" uid="uid://cmjrjbt1erbq5" path="res://Scripts/UI/Scence/Scene.gd" id="2_koxhu"]
+
+[node name="Scence" type="Node2D"]
+
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_7ixr6")
+script = ExtResource("2_koxhu")
+metadata/_edit_lock_ = true

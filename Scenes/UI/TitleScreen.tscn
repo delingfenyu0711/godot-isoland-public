@@ -1,0 +1,234 @@
+[gd_scene load_steps=17 format=3 uid="uid://cvncprki3swil"]
+
+[ext_resource type="Script" uid="uid://culg353y7xxxt" path="res://Scripts/UI/Scence/title_screen.gd" id="1_ho2ec"]
+[ext_resource type="Texture2D" uid="uid://dq42hgv78xhfd" path="res://Assert/UI/title_screen.png" id="2_1alot"]
+[ext_resource type="FontFile" uid="uid://o34f8t6i2qxt" path="res://Assert/Font/平方星辰体.ttf" id="3_u3cqy"]
+[ext_resource type="Texture2D" uid="uid://dwt0ydii04gnc" path="res://Assert/UI/title_button.png" id="4_uni5q"]
+[ext_resource type="Texture2D" uid="uid://dyx8a5aq15oi" path="res://Assert/Texture/pointlight.png" id="5_1alot"]
+[ext_resource type="Script" uid="uid://ch8gwcym08oec" path="res://Scripts/Tool/Scene/Light/tower_light.gd" id="6_u3cqy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ho2ec"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptmvn"]
+texture = ExtResource("4_uni5q")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ddfdk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ac505"]
+texture = ExtResource("4_uni5q")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76bgo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjjju"]
+texture = ExtResource("4_uni5q")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dwfk4"]
+
+[sub_resource type="Animation" id="Animation_uni5q"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u3cqy"]
+resource_name = "Title"
+length = 30.000004
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01666668, 2.9833336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5, 7.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_animation_playing"
+}, {
+"args": [],
+"method": &"_on_animation_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvcwi"]
+_data = {
+&"RESET": SubResource("Animation_uni5q"),
+&"Title": SubResource("Animation_u3cqy")
+}
+
+[node name="Scene" type="Node2D"]
+script = ExtResource("1_ho2ec")
+target_path = "uid://cvncprki3swil"
+
+[node name="TitleScreen" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1alot")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen"]
+material = SubResource("CanvasItemMaterial_ho2ec")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -140.0
+offset_right = 131.0
+offset_bottom = 412.00024
+grow_horizontal = 2
+theme_override_constants/separation = 32
+
+[node name="New" type="Button" parent="TitleScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_u3cqy")
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxTexture_ptmvn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ptmvn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ptmvn")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ptmvn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ddfdk")
+text = "新游戏"
+
+[node name="Load" type="Button" parent="TitleScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_u3cqy")
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_76bgo")
+text = "加载游戏"
+
+[node name="clean" type="Button" parent="TitleScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_u3cqy")
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ac505")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_76bgo")
+text = "删除存档"
+
+[node name="Quit" type="Button" parent="TitleScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_u3cqy")
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxTexture_sjjju")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sjjju")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sjjju")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_sjjju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dwfk4")
+text = "退出游戏"
+
+[node name="Title" type="Label" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_u3cqy")
+theme_override_font_sizes/font_size = 500
+text = "IsoLand"
+
+[node name="TowerLight" type="PointLight2D" parent="TitleScreen"]
+position = Vector2(1536, 576)
+color = Color(0.30769438, 0.30769438, 0.30769438, 1)
+texture = ExtResource("5_1alot")
+script = ExtResource("6_u3cqy")
+
+[node name="SkipMask" type="ColorRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleScreen/SkipMask"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_pvcwi")
+}
+
+[connection signal="pressed" from="TitleScreen/VBoxContainer/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/clean" to="." method="_on_clean_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="gui_input" from="TitleScreen/SkipMask" to="." method="_on_skip_mask_gui_input"]
