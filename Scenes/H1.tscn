@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://or1tl7niiio" path="res://Scenes/scencebase.tscn" id="1_448di"]
 [ext_resource type="Script" uid="uid://bsifaj80mr7h8" path="res://Scripts/Ineractable/Teleporter.gd" id="2_dswhy"]
-[ext_resource type="Texture2D" uid="uid://bvuexciqak3pg" path="res://Assert/Texture/Light.png" id="3_gl0rw"]
+[ext_resource type="Texture2D" uid="uid://dkw21g7k7ueuo" path="res://Assert/Texture/Light.png" id="3_gl0rw"]
 [ext_resource type="Script" uid="uid://dlyc2t0mc3jxc" path="res://Scripts/Tool/Scene/Light/TVlight.gd" id="4_2avaf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dswhy"]

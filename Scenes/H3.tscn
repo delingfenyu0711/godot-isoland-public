@@ -1,18 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://203y4e4rnlik"]
+[gd_scene load_steps=17 format=3 uid="uid://203y4e4rnlik"]
 
 [ext_resource type="PackedScene" uid="uid://or1tl7niiio" path="res://Scenes/scencebase.tscn" id="1_ala4c"]
 [ext_resource type="Script" uid="uid://bsifaj80mr7h8" path="res://Scripts/Ineractable/Teleporter.gd" id="2_7t5f2"]
+[ext_resource type="Script" uid="uid://d1becmdhm7lvl" path="res://Scripts/UI/Scence/H3.gd" id="2_vw6h4"]
 [ext_resource type="Texture2D" uid="uid://ddxcnfmn267qa" path="res://Assert/H3/H3.png" id="2_wnck3"]
 [ext_resource type="Texture2D" uid="uid://dkw21g7k7ueuo" path="res://Assert/Texture/Light.png" id="4_xkajc"]
 [ext_resource type="Script" uid="uid://dlyc2t0mc3jxc" path="res://Scripts/Tool/Scene/Light/TVlight.gd" id="5_b8q0j"]
 [ext_resource type="Script" uid="uid://bdreekvae2ha5" path="res://Scripts/UI/Item/compass.gd" id="6_ktqp1"]
 [ext_resource type="Resource" uid="uid://dy2p5842ageyi" path="res://Assert/Items/compass.tres" id="7_b4uac"]
 [ext_resource type="Texture2D" uid="uid://b35f44lirmeg0" path="res://Assert/H3/Compass.png" id="7_ktqp1"]
+[ext_resource type="Texture2D" uid="uid://bgcqblrggipwt" path="res://Assert/UI/对话框点9图.9.png" id="9_tgx4m"]
+[ext_resource type="FontFile" uid="uid://o34f8t6i2qxt" path="res://Assert/Font/平方星辰体.ttf" id="10_cbkui"]
+[ext_resource type="Texture2D" uid="uid://dwt0ydii04gnc" path="res://Assert/UI/title_button.png" id="11_cbkui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkajc"]
 size = Vector2(192, 328.5)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vw6h4"]
+texture = ExtResource("11_cbkui")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6aw4"]
+texture = ExtResource("11_cbkui")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8l1gp"]
+
 [node name="Scence" instance=ExtResource("1_ala4c")]
+script = ExtResource("2_vw6h4")
 
 [node name="BackGround" parent="." index="0"]
 texture = ExtResource("2_wnck3")
@@ -42,3 +63,76 @@ script = ExtResource("6_ktqp1")
 item = ExtResource("7_b4uac")
 texture = ExtResource("7_ktqp1")
 metadata/_custom_type_script = "uid://deh7s74e8vn8f"
+
+[node name="TextureRect" type="TextureRect" parent="BackGround" index="3"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1160.0
+offset_top = -690.0
+offset_right = -760.0
+offset_bottom = -390.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 0.5)
+texture = ExtResource("9_tgx4m")
+
+[node name="Label" type="Label" parent="BackGround/TextureRect" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 25.0
+offset_right = 139.0
+offset_bottom = 79.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_cbkui")
+theme_override_font_sizes/font_size = 52
+text = "试玩到此结束"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackGround/TextureRect" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Leave" type="Button" parent="BackGround/TextureRect/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_cbkui")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_vw6h4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vw6h4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vw6h4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_vw6h4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_vw6h4")
+text = "离开"
+
+[node name="Continue" type="Button" parent="BackGround/TextureRect/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_cbkui")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_l6aw4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l6aw4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l6aw4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_l6aw4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8l1gp")
+text = "再玩一会"
+
+[connection signal="interact" from="BackGround/compass" to="." method="_on_compass_interact"]
+[connection signal="pressed" from="BackGround/TextureRect/VBoxContainer/Leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="BackGround/TextureRect/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
